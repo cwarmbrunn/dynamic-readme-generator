@@ -49,6 +49,12 @@ const questions = () => {
         }
       },
     },
+    // Question #4 - Usage Info
+    {
+      type: "input",
+      name: "usage",
+      message: "Provide instructions and examples for use",
+    },
   ]);
 };
 
