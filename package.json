@@ -1,0 +1,19 @@
+{
+  "name": "week-9",
+  "version": "1.0.0",
+  "description": "**Project Title:**",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cwarmbrunn/readme-generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cwarmbrunn/readme-generator/issues"
+  },
+  "homepage": "https://github.com/cwarmbrunn/readme-generator#readme"
+}
