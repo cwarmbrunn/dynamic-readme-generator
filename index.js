@@ -2,13 +2,16 @@
 
 // Set up Inquirer requirement
 const inquirer = require("inquirer");
-// Set up generate Page requirement
-const generatePage = require("./src/readme-template");
+
+// Set up generate Page requirement with a link to page-template.js file
+const generatePage = require("./src/page-template");
+
+// Set up writeFile and require the generate-site.js file
+const { writeFile } = require("./utils/generate-site");
 
 // Grants access to the file system functionality
 const fs = require("fs");
 
-const { writeFile } = require("./generateMarkdown");
 // TODO: Create an array of questions for user input
 const promptUser = () => {
   return inquirer.prompt([
@@ -28,9 +31,9 @@ const promptUser = () => {
       },
     },
     {
-      // Question #2 - What is your email address?
+      // Question #2 -  Email Address
       type: "input",
-      name: "title",
+      name: "email",
       message: "What is your email address? (Required)",
       // Validation if nameInput is blank
       validate: (nameInput) => {
@@ -97,7 +100,7 @@ const promptUser = () => {
     // Question #5 - Installation Instructions
     {
       type: "list",
-      name: "install",
+      name: "installation",
       message: "What command should be run to install dependencies? (Required)",
       choices: ["npm i", "npm install", "N/A"],
       // Validation if nameInput is blank
@@ -111,7 +114,7 @@ const promptUser = () => {
       },
     },
 
-    // Question #6 - Tests
+    // Question #6 - Test Commands
     {
       type: "list",
       name: "tests",
@@ -133,7 +136,7 @@ const promptUser = () => {
       message:
         "What does the user need to know about using this repo? (Optional)",
     },
-    // Question #7 - Contributing
+    // Question #7 - Contributions
     {
       type: "input",
       name: "contributions",
@@ -142,33 +145,17 @@ const promptUser = () => {
     },
   ]);
 };
+
 // TODO: Create a function to write responses into userResponses.json
-promptUser()
-  // .then((portfolioData) => {
-  //   return generatePage(portfolioData);
-  // })
-  // .then((markdownFile) => {
-  //   return writeFile(markdownFile);
-  // })
-  // .then((writeFileResponse) => {
-  //   console.log(writeFileResponse);
-  //   return copyFile();
-  // })
-  // .then((copyFileResponse) => {
-  //   console.log(copyFileResponse);
-  // })
-  // .catch((err) => {
-  //   console.log(err);
-  // });
+promptUser().then((data) => {
+  return writeFile(data);
+  // Setting up file name
+  // const fileName = `${data.fileName}.json`;
 
-  .then((data) => {
-    // Setting up file name
-    const fileName = `${data.fileName}.json`;
-
-    fs.writeFile(fileName, JSON.stringify(data, null, "\t"), (err) =>
-      err ? console.log(err) : console.log("You DID IT!")
-    );
-  });
+  // fs.writeFile(fileName, JSON.stringify(data, null, "\t"), (err) =>
+  //   err ? console.log(err) : console.log("You DID IT!")
+  // );
+});
 
 // TODO: Create a function to initialize app
 function init() {}

@@ -1,16 +1,3 @@
-const fs = require("fs");
-const writeFile = (fileContent) => {
-  return new Promise((resolve, reject) => {
-    fs.writeFile("index.md", fileContent, (err) => {
-      if (err) {
-        reject(err);
-        return;
-      }
-      resolve({ ok: true, message: "README.md created!" });
-    });
-  });
-};
-
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {}
@@ -24,8 +11,20 @@ function renderLicenseLink(license) {}
 function renderLicenseSection(license) {}
 
 // TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
+function generateMarkdown(readmeData) {
   return `
+
+  ${projectsArr.map({
+    github,
+    email,
+    title,
+    description,
+    license,
+    installation,
+    tests,
+    usage,
+    contributions,
+  })}
   <!-- Experiment Title Goes Here -->
 
   # ${title}
@@ -38,6 +37,7 @@ function generateMarkdown(data) {
 
   ## Description
   ${description}
+
   <!-- Table of Contents Goes Here -->
   * [Installation](#installation)
 
@@ -68,7 +68,13 @@ function generateMarkdown(data) {
   ## Contributions
   ${contributions}
 
+  ## Questions
+  Check out my GitHub profile at "https://github.com/${header.github}
+  
+  Still have questions? Reach me at ${email}
   `;
 }
 
-module.exports = writeFile;
+module.exports = (templateData) => {
+  const {} = templateData;
+};
