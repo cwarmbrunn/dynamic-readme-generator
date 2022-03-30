@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/cwarmbrunn/readme-generator/issues"
   },
-  "homepage": "https://github.com/cwarmbrunn/readme-generator#readme"
+  "homepage": "https://github.com/cwarmbrunn/readme-generator#readme",
+  "dependencies": {
+    "inquirer": "^8.2.2"
+  }
 }

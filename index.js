@@ -1,14 +1,15 @@
-const { writeFile } = require("./utils/generateMarkdown.js");
-
 // TODO: Include packages needed for this application
+
 // Set up Inquirer requirement
 const inquirer = require("inquirer");
 // Set up generate Page requirement
-const generatePage = require("./utils/generateMarkdown.js");
+const generatePage = require("./src/readme-template");
 
+// Grants access to the file system functionality
+const fs = require("fs");
 // TODO: Create an array of questions for user input
-const questions = () => {
-  return inquirer.prompt([
+inquirer
+  .prompt([
     // Question #1 - Project Title
     {
       type: "input",
@@ -71,24 +72,16 @@ const questions = () => {
       message:
         "Go the extra mile and write tests for your application. Then provide examples on how to run them here. (Optional)",
     },
-  ]);
-};
+  ])
 
-// TODO: Create a function to write README file
-const writeFile = (fileContent) => {
-  return new Promise((resolve, reject) => {
-    fs.writeFile("./Develop/utils/index.md", (err) => {
-      if (err) {
-        reject(err);
-        return;
-      }
-      resolve({ ok: true, message: "File Created!" });
-    });
+  // TODO: Create a function to write README file
+  .then((data) => {
+    const fileName = `${data.name}.md`;
+
+    fs.writeFile(fileName, JSON.stringify(data, null, "\t"), (err) =>
+      err ? console.log(err) : console.log("You DID IT!")
+    );
   });
-};
 
 // TODO: Create a function to initialize app
 function init() {}
-
-// Function call to initialize app
-init().then(questions);
