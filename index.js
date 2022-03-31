@@ -150,5 +150,6 @@ promptUser().then((data) => {
   return writeFile(data);
 });
 
+// ASk ABOUT IN OFFICE HOURS 3/31/2022
 // TODO: Create a function to initialize app
 function init() {}

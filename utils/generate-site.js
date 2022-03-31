@@ -69,17 +69,26 @@ function renderLicenseSection(license) {}
 
 // Write File
 const writeFile = (data) => {
+  // Return new promise with resolve/reject parameters 
   return new Promise((resolve, reject) => {
+
+    // Write file to .src/index.md and run the function generateMarkdown(data)
+    // This will return the content of the Readme file
     fs.writeFile("./src/index.md", generateMarkdown(data), (err) => {
+
+      // If there's an error, reject and return
       if (err) {
         reject(err);
         return;
       }
+
+      // If resolve is true, send a message saying index.md has been created 
       resolve({ ok: true, message: "index.md created!" });
     });
   });
 };
 
+// Export writeFile
 module.exports = {
   writeFile,
 };
