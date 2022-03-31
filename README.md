@@ -19,8 +19,7 @@ As this is a site built with Node.js inputs - there is no live site. Please see 
 **Technology Used:**
 
 - JavaScript
-- HTML
-- CSS
+- Markdown
 - Node.js
 
 ---
@@ -31,5 +30,5 @@ In order to install this application, you will need Node.js on your local comput
 
 ---
 
-**Screenshot:**
+**Screenshot and Video Link:**
 ![]()

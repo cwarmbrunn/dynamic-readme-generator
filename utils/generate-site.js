@@ -14,7 +14,7 @@ function generateMarkdown(data) {
     
       
 <!-- Experiment Description Goes Here -->
-    
+   
 ## Description
  ${data.description}
     
@@ -27,12 +27,13 @@ function generateMarkdown(data) {
     
 * [License](#license)
 
+
 ## Installation
 
 To install necessary dependencies, run the following command:
     
 *${data.installation}*
-      
+
 ## Testing
       
 To test, run the following command:
@@ -40,14 +41,16 @@ To test, run the following command:
      
  *${data.testing}*
   
-    
+  
  ## Usage
     
 ${data.usage}
-    
+
+ 
 ## Contributing
 ${data.contributions}
-    
+
+ 
 ## Questions
 Check out my GitHub profile at https://github.com/${data.github}
       
