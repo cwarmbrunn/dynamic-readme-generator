@@ -145,5 +145,3 @@ promptUser().then((data) => {
   return writeFile(data);
 });
 
-// TODO: Create a function to initialize app
-function init() {}
