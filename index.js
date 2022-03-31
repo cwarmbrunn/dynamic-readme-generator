@@ -77,19 +77,14 @@ const promptUser = () => {
       type: "list",
       name: "license",
       message: "Select a license for your project. (Required)",
-      choices: [
-        "MIT",
-        "ISC",
-        "Microsoft Public License",
-        "The Unlicense",
-        "N/A",
-      ],
+      choices: ["MIT", "AGPL-3.0", "GPL-3.0", "N/A"],
+
       // Validation if nameInput is blank
       validate: (nameInput) => {
         if (nameInput) {
           return true;
         } else {
-          console.log("Please select a license!");
+          console.log("Please select a license option!");
           return false;
         }
       },

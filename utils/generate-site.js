@@ -10,9 +10,8 @@ function generateMarkdown(data) {
     
 <!-- GitHub License Goes Here -->
 ## License
-![GitHub license]()
-    
-      
+[![License: ${data.license}](https://img.shields.io/badge/License-${data.license}-blue.svg)](https://choosealicense.com/licenses/${data.license}/)
+
 <!-- Experiment Description Goes Here -->
    
 ## Description
@@ -34,11 +33,11 @@ To install necessary dependencies, run the following command:
     
 *${data.installation}*
 
+
 ## Testing
       
 To test, run the following command:
-    
-     
+       
  *${data.testing}*
   
   
@@ -60,11 +59,38 @@ Still have questions? Reach me at ${data.email}
 
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-function renderLicenseBadge(license) {}
+function renderLicenseBadge(license) {
+
+ // MIT BADGE
+ // https://img.shields.io/badge/License-MIT-blue.svg
+
+ // AGPL-3.0 BADGE
+ // https://img.shields.io/badge/License-AGPL_v3-blue.svg
+ 
+// GPL-3.0 BADGE
+ // https://img.shields.io/badge/License-GPLv3-blue.svg
+
+ // N/A BADGE
+ // Need to return empty somehow
+}
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseLink(license) {
+
+  // MIT LINK
+  // https://choosealicense.com/licenses/mit/ 
+  
+
+  // AGPL-3.0 LINK
+  // https://choosealicense.com/licenses/agpl-3.0/
+
+  // GPL-3.0 LINK
+  //https://choosealicense.com/licenses/gpl-3.0/
+
+  // N/A LINK
+  // Need to return empty somehow
+}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
