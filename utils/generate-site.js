@@ -3,29 +3,51 @@ const fs = require("fs");
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
+  // Correct the syntax to generate the proper AGPL-3.0 URL
+  if (data.license === "AGPL-3.0") {
+    data.licenseBadge = "AGPL_v3";
+    data.licenseLink = "agpl-3.0";
+
+    // Correct the syntax to generate the proper GPL-3.0 URL
+  } else if (data.license === "GPL-3.0") {
+    data.licenseBadge = "GPLv3";
+    data.licenseLink = "gpl-3.0";
+    // If NOT data.licenseBadge then equal to data.license and proceed
+  } else if (!data.licenseBadge && !data.licenseLink) {
+    data.licenseBadge = data.license;
+    data.licenseLink = data.license;
+  }
+
+  const license = `## License
+  [![License: ${data.license}](https://img.shields.io/badge/License-${data.licenseBadge}-blue.svg)](https://choosealicense.com/licenses/${data.licenseLink}/)`;
+  if (data.license == "N/A") {
+    license ="No license Selected";
+  }
+
   return `
 <!-- Experiment Title Goes Here -->
     
 # ${data.title}
     
 <!-- GitHub License Goes Here -->
-## License
-[![License: ${data.license}](https://img.shields.io/badge/License-${data.license}-blue.svg)](https://choosealicense.com/licenses/${data.license}/)
-
-<!-- Experiment Description Goes Here -->
+${license}
    
 ## Description
  ${data.description}
     
  <!-- Table of Contents Goes Here -->
+* [License](#license)
+
+* [Description](#description)
+
 * [Installation](#installation)
+
+* [Testing](#testing)
     
 * [Usage](#usage)
     
 * [Contributing](#contributing)
     
-* [License](#license)
-
 
 ## Installation
 
@@ -56,46 +78,6 @@ Check out my GitHub profile at https://github.com/${data.github}
 Still have questions? Reach me at ${data.email}
 `;
 }
-
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-function renderLicenseBadge(license) {
-
- // MIT BADGE
- // https://img.shields.io/badge/License-MIT-blue.svg
-
- // AGPL-3.0 BADGE
- // https://img.shields.io/badge/License-AGPL_v3-blue.svg
- 
-// GPL-3.0 BADGE
- // https://img.shields.io/badge/License-GPLv3-blue.svg
-
- // N/A BADGE
- // Need to return empty somehow
-}
-
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {
-
-  // MIT LINK
-  // https://choosealicense.com/licenses/mit/ 
-  
-
-  // AGPL-3.0 LINK
-  // https://choosealicense.com/licenses/agpl-3.0/
-
-  // GPL-3.0 LINK
-  //https://choosealicense.com/licenses/gpl-3.0/
-
-  // N/A LINK
-  // Need to return empty somehow
-}
-
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
-
 // Write File
 const writeFile = (data) => {
   return new Promise((resolve, reject) => {
