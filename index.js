@@ -3,9 +3,6 @@
 // Set up Inquirer requirement
 const inquirer = require("inquirer");
 
-// Set up generate Page requirement with a link to page-template.js file
-const generatePage = require("./src/page-template");
-
 // Set up writeFile and require the generate-site.js file
 const { writeFile } = require("./utils/generate-site");
 
@@ -117,7 +114,7 @@ const promptUser = () => {
     // Question #6 - Test Commands
     {
       type: "list",
-      name: "tests",
+      name: "testing",
       message: "What command should be run to run tests? (Required)",
       choices: ["npm test", "N/A"],
       // Validation if nameInput is blank
@@ -148,13 +145,9 @@ const promptUser = () => {
 
 // TODO: Create a function to write responses into userResponses.json
 promptUser().then((data) => {
+  console.log("Generating file...");
+  console.log("Done! Check index.md under the src folder.");
   return writeFile(data);
-  // Setting up file name
-  // const fileName = `${data.fileName}.json`;
-
-  // fs.writeFile(fileName, JSON.stringify(data, null, "\t"), (err) =>
-  //   err ? console.log(err) : console.log("You DID IT!")
-  // );
 });
 
 // TODO: Create a function to initialize app
