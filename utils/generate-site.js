@@ -12,16 +12,23 @@ function generateMarkdown(data) {
   } else if (data.license === "GPL-3.0") {
     data.licenseBadge = "GPLv3";
     data.licenseLink = "gpl-3.0";
+
+    // Correct the syntax to generate the proper MIT URL
+  } else if (data.license === "MIT") {
+    data.licenseBadge = "MIT";
+    data.licenseLink = "mit";
+
     // If NOT data.licenseBadge then equal to data.license and proceed
   } else if (!data.licenseBadge && !data.licenseLink) {
     data.licenseBadge = data.license;
     data.licenseLink = data.license;
   }
 
-  const license = `## License
+  var license = `## License
   [![License: ${data.license}](https://img.shields.io/badge/License-${data.licenseBadge}-blue.svg)](https://choosealicense.com/licenses/${data.licenseLink}/)`;
-  if (data.license == "N/A") {
-    license ="No license Selected";
+  if (data.license === "N/A") {
+    license = `## License 
+  *No license selected*`;
   }
 
   return `
@@ -46,7 +53,9 @@ ${license}
     
 * [Usage](#usage)
     
-* [Contributing](#contributing)
+* [Contributions](#contributions)
+
+* [Questions](#questions)
     
 
 ## Installation
@@ -68,14 +77,14 @@ To test, run the following command:
 ${data.usage}
 
  
-## Contributing
+## Contributions
 ${data.contributions}
 
  
 ## Questions
 Check out my GitHub profile at https://github.com/${data.github}
       
-Still have questions? Reach me at ${data.email}
+*Still have questions?* Reach me at ${data.email}
 `;
 }
 // Write File
